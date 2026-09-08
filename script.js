@@ -176,8 +176,8 @@ window.addEventListener('DOMContentLoaded', () => {
     checkAuth();
 });
 
-// --- INTEGRASI BACKEND API ---
-const API_BASE = 'https://onlyyapi.lanncodex.my.id/api';
+// --- INTEGRASI BACKEND API BARU ---
+const API_BASE = 'https://motionapi.justlann.my.id/api';
 const statusDiv = document.getElementById('status');
 
 async function sendMagicLink() {
@@ -207,7 +207,17 @@ async function verifyPremium() {
 
     statusDiv.innerText = 'Memverifikasi Magic Link...';
     try {
-        const res = await fetch(`${API_BASE}/verif?email=${encodeURIComponent(email)}&magicLink=${encodeURIComponent(magicLink)}`);
+        const res = await fetch(`${API_BASE}/verif`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                magicLink: magicLink,
+                orderId: 'OnlyyLann'
+            })
+        });
         const data = await res.json().catch(() => ({}));
 
         if (!res.ok || data.status === false || data.error) {
