@@ -38,7 +38,7 @@ amgenerator/
 │   ├── am.png
 │   ├── amgen.jpg
 │   ├── contoh.jpg
-│   ├── naruto-lofi.mp3
+│   ├── music.mp3
 │   └── naruto.mp4
 ├── index.html
 ├── script.js
